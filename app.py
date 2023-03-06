@@ -2,6 +2,14 @@ import streamlit as st
 import pickle
 import requests
 
+st.set_page_config(page_title="Movie Recommender System", page_icon=":movie_camera:", layout="wide")
+hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        </style>
+        """
+st.markdown(hide_menu_style, unsafe_allow_html=True)
 # load the movie list and similarity matrix
 movies = pickle.load(open('movie_list.pkl', 'rb'))
 similarity = pickle.load(open('similarity.pkl', 'rb'))
@@ -89,3 +97,4 @@ if st.button('Show Recommendation'):
     st.markdown('***')
     st.markdown('***')
     st.markdown("<h6 style='text-align: center; color: gray;'>Made with ❤️ by Chirayu</h6>", unsafe_allow_html=True)
+
